@@ -1,5 +1,6 @@
 package com.linkup.UserManagerProject.run;
 
+import com.linkup.UserManagerProject.model.dao.UserDAO;
 import com.linkup.UserManagerProject.model.dto.UserDTO;
 
 import java.io.FileInputStream;
@@ -22,7 +23,7 @@ Author : 2025-08-27 JeongHoon
 내용 : JDBC TEST mysql 파일 과 연동하기
     ver 1.0  usertest1db 조회->성공 2025-08-27
     ver 1.1 DTO 통합 ->성공 2025-08-27
-    ver 1.2 DAO 통합 ->>
+    ver 1.2 DAO 통합 ->>성공 2025-08-27
 
 * com.linkup.
 ├── common         // JDBCTemplate
@@ -33,10 +34,6 @@ Author : 2025-08-27 JeongHoon
 ├── mapper         // MyBatis 등 매퍼 인터페이스
 ├── util
 └── Application    // 메인
-
-버전 :
- ver1 = usertest1db 조회하기
- ver1.1 = dto 통합
 
 
 
@@ -51,33 +48,19 @@ CREATE TABLE `USERTEST1`
 public class Application {
 
     public static void main(String[] args) {
+        /*
+        DAO로 이동
+        pstmt, rset
+        DAO로 전달
+        con
+        */
+        UserDAO userDAO=new UserDAO();
         Connection con = getConnection();
-        PreparedStatement pstmt = null;
-        ResultSet rset = null;
-        List<UserDTO> userDTOList=new ArrayList<>();;
 
-        try {
-            pstmt=con.prepareStatement("SELECT USER_CD, USER_ID, USER_PW FROM USERTEST1");
-            rset=pstmt.executeQuery();
-            while(rset.next()){
-                UserDTO userDTO=new UserDTO();
-                userDTO.setUserCode(rset.getInt("USER_CD"));
-                userDTO.setUserID(rset.getString("USER_ID"));
-                userDTO.setUserPassword(rset.getString("USER_PW"));
-
-                System.out.println(userDTO.getUserCode());
-                System.out.println(userDTO.getUserID());
-                System.out.println(userDTO.getUserPassword());
-                userDTOList.add(userDTO);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }finally {
-            close(rset);
-            close(pstmt);
-            close(rset);
-        }
+        List<UserDTO> userDTOList=new ArrayList<>();
 
 
+        userDAO.selectAllCode(con);
+        System.out.println(userDAO.selectLastCode(con));
     }
 }
