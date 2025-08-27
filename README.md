@@ -3,8 +3,7 @@ Webproject User 기능 Test
 
 # 개발환경
 Java ver 17 
-JDBC 
-JAVA 
+JDBC mysql-connector-java 8.0.33
 SERVLET 
 TOMCAT 
 MYSQL 
