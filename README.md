@@ -27,6 +27,23 @@ String userID
 String userPassword
 
 
+
+#우선순위
+
+1. 개발환경 세팅 20250827
+2. 테스트
+2-1 JAVA
+2-2 JDBC
+2-2 Servlet
+2-3 통합테스트
+3. SQL
+4. JAVA
+5. JDBC
+6. Servlet
+7. 통합테스트 
+   
+
+
 추가할 연동 라이브러리
 1. 게시판
 2.
