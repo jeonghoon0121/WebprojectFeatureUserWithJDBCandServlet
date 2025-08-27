@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -19,7 +20,9 @@ Main Project : LinkupWebPage
 Sub Project : UserManagerProject
 Author : 2025-08-27 JeongHoon
 내용 : JDBC TEST mysql 파일 과 연동하기
-    usertest1db 조회->성공 2025-08-27
+    ver 1.0  usertest1db 조회->성공 2025-08-27
+    ver 1.1 DTO 통합 ->성공 2025-08-27
+    ver 1.2 DAO 통합 ->>
 
 * com.linkup.
 ├── common         // JDBCTemplate
@@ -33,6 +36,8 @@ Author : 2025-08-27 JeongHoon
 
 버전 :
  ver1 = usertest1db 조회하기
+ ver1.1 = dto 통합
+
 
 
 CREATE TABLE `USERTEST1`
@@ -44,18 +49,26 @@ CREATE TABLE `USERTEST1`
 )
 * */
 public class Application {
+
     public static void main(String[] args) {
         Connection con = getConnection();
         PreparedStatement pstmt = null;
         ResultSet rset = null;
+        List<UserDTO> userDTOList=new ArrayList<>();;
 
         try {
             pstmt=con.prepareStatement("SELECT USER_CD, USER_ID, USER_PW FROM USERTEST1");
             rset=pstmt.executeQuery();
             while(rset.next()){
-                System.out.println(rset.getInt("USER_CD"));
-                System.out.println(rset.getString("USER_ID"));
-                System.out.println(rset.getString("USER_PW"));
+                UserDTO userDTO=new UserDTO();
+                userDTO.setUserCode(rset.getInt("USER_CD"));
+                userDTO.setUserID(rset.getString("USER_ID"));
+                userDTO.setUserPassword(rset.getString("USER_PW"));
+
+                System.out.println(userDTO.getUserCode());
+                System.out.println(userDTO.getUserID());
+                System.out.println(userDTO.getUserPassword());
+                userDTOList.add(userDTO);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
