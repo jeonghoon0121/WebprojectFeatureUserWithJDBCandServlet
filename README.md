@@ -42,7 +42,12 @@ String userPassword
 6. JDBC
 7. Servlet
 8. 통합테스트 
+
+
+
+
    
+   ver 1.0  usertest1db 조회->성공 2025-08-27
 
 
 추가할 연동 라이브러리
