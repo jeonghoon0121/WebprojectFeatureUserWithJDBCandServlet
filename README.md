@@ -39,7 +39,7 @@ String userPassword
 2. 테스트
 2-1 mysql 20250827
 2-2 JDBC 20250827
-2-2 JAVA
+2-2 JAVA 20250827
 2-3 Servlet
    4 통합테스트
 4. SQL
@@ -48,11 +48,19 @@ String userPassword
 7. Servlet
 8. 통합테스트 
 
-
+Check
+1. 객체지향
+2. 보안 -prestatement 사용
+         -비밀번호 나중에 암호화 기능 필요
+3. 원리
 
 
    
    ver 1.0  usertest1db 조회->성공 2025-08-27
+   ver 1.1 DTO 통합 ->성공 2025-08-27
+   ver 1.2 DAO 통합 ->>성공 2025-08-27
+   ver 1.3 mapper ->userDAO -> Application 구조 조회성공 ->>성공 2025-08-27
+   ver 1.4 일반 서블릿 통합
 
 
 추가할 연동 라이브러리
