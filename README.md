@@ -1,6 +1,11 @@
 # WebprojectFeatureUser
 Webproject User 기능 Test
 
+# PLAN
+1. JDBC, 일반 서블릿으로 구현
+2. mybatis, jsp로 변경
+3. 추후에 스프링으로 옮기기 
+
 # 개발환경
 Java ver 17 
 JDBC mysql-connector-java 8.0.33
