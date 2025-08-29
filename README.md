@@ -65,5 +65,27 @@ Check
 
 추가할 연동 라이브러리
 1. 게시판
-2. 보안
+2. 보
+
+일반 서블릿
+HttpServletRequest는 ServletRequest 타입 상속받아 구현
+시제 사용시 HttpServletRequest 다운캐스팅 사용
+
+데이터 전송방식
+ 1. get
+ 2. post
+
+ 메소드
+ 1. doget() 검색기능
+ 2. dopost() ket&value 전송
+
+UTF-8지정
+@Override
+protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	System.out.println(request.getCharacterEncoding());
+}
+
+ HttpServletRequest
+ HttpServletResponse
+ 
 
