@@ -2,6 +2,7 @@ package com.linkup.ManagerOfUser2.controller;
 
 import com.linkup.ManagerOfUser2.model.dao.UserDAO;
 import com.linkup.ManagerOfUser2.model.dto.UserDTO;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -21,8 +22,18 @@ public class UserController extends HttpServlet {
     List<UserDTO> userDTOList=new ArrayList<>();
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        userDAO.selectAllCode(con);
+
+//       userDAO.selectAllCode(con);
+//        userDAO.selectAllCode2(con);
+        for(UserDTO userDTO:userDAO.selectAllCode2(con)){
+            System.out.println(userDTO.toString());
+        }
+        List<UserDTO> userDTOList = userDAO.selectAllCode2(con); // DB에서 가져온 리스트를 직접 할당
+        request.setAttribute("userDTOList", userDTOList);
+
+        request.setAttribute("userDTOList",userDTOList);
+        RequestDispatcher requestDispatcher=request.getRequestDispatcher("/receive");
+        requestDispatcher.forward(request,response);
     }
 
 }
